@@ -123,7 +123,7 @@ const Footer = () => {
             </div>
 
             <div className="flex items-center justify-center py-10">
-                <span className="text-gray-400 leading-10">Safdar Ali &copy; 2024</span>
+                <span className="text-gray-400 leading-10"> Made with ❤️ | Safdar Ali &copy; 2024</span>
             </div>
         </footer>
     )

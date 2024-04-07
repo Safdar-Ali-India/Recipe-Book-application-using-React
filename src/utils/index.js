@@ -1,45 +1,36 @@
-// const queryStrings = {
-//     app_id: process.env.REACT_APP_APP_ID,
-//     app_key:process.env.REACT_APP_APP_KEY
-// }
-
-// https://api.edamam.com/api/recipes/v2?type=public&q=pizza&app_id=ea8a35b4&app_key=56b09823e04045b663443621d9014218
 
 
-export const fetchRecipe = async (defaultQuery) => {
-    const {app_id,app_key} = queryStrings;
-    try {
-        const data = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${defaultQuery}&app_id=${app_id}&app_key=${app_key}`);
-        const response = await data.json();
-        return response;
-    }
-    catch(e) {
-        console.log(e,'something went wrong')
-        return e
-    }
+console.log(import.meta.env.VITE_APP_APP_ID);
+console.log(import.meta.env.VITE_APP_APP_KEY);
+
+
+const app_id= "ac6341a0";
+const app_key="1fef44cac3476c67a4747d54b32c1e20";
+
+
+
+
+console.log(app_id);
+
+export async function fetchRecipes(filter) {
+    const { query, limit } = filter;
+    // const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${app_key}&from=0&to=${limit}`;
+    const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${app_key}&from=0&to=${limit}&`;
+
+
+    const response = await fetch(url)
+
+    const data = await response.json();
+
+    return data?.hits;
 }
 
-export const fetchRecipes = async (defaultQuery) => {
-    const {app_id,app_key} = queryStrings;
-    try {
-        const data = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${defaultQuery}&app_id=${app_id}&app_key=${app_key}`);
-        const response = await data.json();
-        return response;
-    }
-    catch(e) {
-        console.log(e,'something went wrong')
-        return e
-    }
-}
-export const fetchTabData = async (defaultQuery) => {
-    const {app_id,app_key} = queryStrings;
-    try {
-        const data = await fetch(`https://api.edamam.com/api/recipes/v2/${defaultQuery}?type=public&app_id=${app_id}&app_key=${app_key}`);
-        const response = await data.json();
-        return response;
-    }
-    catch(e) {
-        console.log(e,'something went wrong')
-        return e
-    }
+export async function fetchRecipe(id) {
+    const url = `https://api.edamam.com/search?r=http://www.edamam.com/ontologies/edamam.owl%23${id}&app_id=${app_id}&app_key=${app_key}`
+
+    const response = await fetch(url)
+    
+    const data = await response.json();
+    
+    return data[0];
 }

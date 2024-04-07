@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchRecipe, fetchRecipes } from '../utils'
 import Loading from '../components/Loading'
+// import Header from '../components/Header'
 import { AiFillPushpin } from "react-icons/ai"
 import { BsPatchCheck } from "react-icons/bs"
 import RecipeCard from '../components/RecipeCard'
@@ -50,9 +51,7 @@ const RecipeDetail = () => {
   }
   return (
     <div className='w-full'>
-      <Header
-        title={recipe?.label} image={recipe?.image}
-      />
+  
 
       <div className='w-full px-4 lg:px-20 pt-5'>
 

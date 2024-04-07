@@ -1,33 +1,29 @@
-import React from "react";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import {Routes, Route, Outlet} from 'react-router-dom'
 import Home from "./pages/Home";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import RecipeDetail from './pages/RecipeDetail';
-import Error from "./pages/Error";
 
-function Layout() {
+function Layout(){
   return (
     <>
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <Navbar/>
+        <Outlet/>
+      <Footer/>
     </>
-  );
+  )
 }
-
-const App = () => {
+function App() {
   return (
-    <BrowserRouter>
+    <div className='bg-black'>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="recipes/:id" element={<RecipeDetail />} />
-          <Route path="/*" element={<Error />}></Route>
+          <Route path='recipes/:id' element={<RecipeDetail />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </div>
   );
-};
+}
 
 export default App;
